@@ -425,6 +425,63 @@
       .win-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
       .win-btns .cta-btn{padding:9px 10px;font-size:13px;}
     }
+
+    /* ══ v16 — teks & tombol lebih besar di HP ══ */
+    /* tidak ada efek "hover menempel" setelah disentuh */
+    @media (hover:none){
+      .opt-btn:hover:not(:disabled):not(.locked),.theme-btn:hover,.cta-btn:hover{transform:none;}
+    }
+    @media (max-width:680px) and (orientation:portrait){
+      .menu-title h1{font-size:26px;}
+      .t-title{font-size:20px;}
+      .t-sub{font-size:12px;}
+      .setup-title h2{font-size:22px;}
+      .setup-title p{font-size:14px;}
+      .diff-label{font-size:14px;margin-bottom:8px;}
+      .diff-btn,.mode-btn{font-size:14px;padding:11px 4px;}
+      .diff-btn small,.mode-btn small{font-size:11px;}
+      .cta-btn{font-size:17px;padding:15px 18px;}
+      .back-link{font-size:14px;padding:6px;}
+      .tm-input{padding:11px 10px;}
+      /* karakter pemilihan lebih besar */
+      .char-pick-item img{height:92px;max-width:60px;}
+      .char-pick-item[data-char="dzaki"] img{height:calc(92px * .9);}
+      .char-pick-item span{font-size:12px;}
+      /* layar main */
+      .g-hud-title{font-size:14px;}
+      .hud-pill{font-size:12px;padding:4px 10px;}
+      .hud-btn{font-size:15px;padding:6px 11px;}
+      .q-card{padding:13px 15px;}
+      .q-card .q-cat{font-size:11px;}
+      .q-card .q-txt{font-size:16px;line-height:1.5;}
+      .q-ar{font-size:25px;}
+      .race-banner{font-size:13px;padding:6px 10px;}
+      .opts-list{gap:8px;}
+      .opt-btn{font-size:16px;min-height:54px;padding:12px 13px;gap:12px;}
+      .opt-ltr{width:30px;height:30px;font-size:14px;border-radius:8px;}
+      .opt-btn .ar{font-size:23px;}
+      .mini-fb{padding:12px 14px;}
+      .mini-fb .fb-title{font-size:15px;}
+      .mini-fb .fb-desc{font-size:14px;}
+      .mini-fb .fb-next{font-size:15px;padding:11px;}
+      .sc-name{font-size:10px;}
+      .rope-labels{font-size:12px;}
+      .timer-ring-txt{font-size:13px;}
+      #qNumCenter{font-size:12px!important;}
+      /* layar menang & papan skor */
+      .win-title{font-size:22px;}
+      .win-sub{font-size:14px;}
+      .win-btns .cta-btn{font-size:16px;padding:14px;}
+      .lb-name,.lb-sc{font-size:16px;}
+    }
+    @media (max-height:520px) and (min-aspect-ratio:1/1){
+      .q-card .q-txt{font-size:12.5px;}
+      .opt-btn{font-size:13px;min-height:40px;}
+      .opt-ltr{width:25px;height:25px;font-size:12px;}
+      .race-banner{font-size:11px;}
+      .hud-pill{font-size:11px;}
+      .hud-btn{font-size:13px;padding:4px 9px;}
+    }
   </style>
 </head>
 <body>
