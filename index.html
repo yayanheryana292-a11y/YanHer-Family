@@ -257,7 +257,7 @@
     /* ══ 16:9 — beranda & pemilihan karakter ══ */
     .team-col{margin-bottom:14px;}
     .hero-stage{display:none;}
-    @media (min-width:681px) and (min-aspect-ratio:1/1){
+    @media (min-width:681px) and (min-aspect-ratio:1/1), (max-height:520px) and (min-aspect-ratio:1/1){
       /* Beranda */
       #screenMenu{padding:1.5vh 1.5vw;}
       .menu-card{width:min(94vw,calc(86vh*16/9));max-width:none;aspect-ratio:16/9;padding:0;display:grid;grid-template-columns:1.1fr 1fr;border-radius:28px;}
@@ -327,6 +327,104 @@
       .arena-img{max-width:260px;}
     }
     @media(min-width:900px){.g-panel{flex:0 0 270px;}}
+
+    /* ══ v15 — kenyamanan di HP ══ */
+    body{min-height:100vh;min-height:100dvh;}
+    #screenMenu,#screenStart{min-height:100vh;min-height:100dvh;}
+    button,.char-pick-item,.tm-input{touch-action:manipulation;}
+
+    /* Layar bisa di-scroll di HP (sebelumnya terkunci overflow:hidden sehingga terpotong) */
+    @media (max-width:680px), (max-height:520px) and (min-aspect-ratio:1/1){
+      body{overflow-y:auto;overflow-x:hidden;}
+      #screenWin{overflow-y:auto;justify-content:flex-start;padding:12px;}
+      .win-card{margin:auto;}
+    }
+
+    /* ── HP tegak (portrait) ── */
+    @media (max-width:680px) and (orientation:portrait){
+      #screenMenu,#screenStart{padding:12px 12px 20px;}
+      .menu-card{padding:24px 16px 20px;}
+      .setup-card{padding:22px 14px 18px;}
+      .tm-input{font-size:16px;}
+      /* 4 karakter selalu 1 baris, tidak patah 3+1 */
+      .char-picker{flex-wrap:nowrap;gap:5px;}
+      .char-pick-item{flex:1 1 0;min-width:0;padding:6px 2px;}
+      .char-pick-item img{width:100%;max-width:56px;height:64px;}
+      .char-pick-item[data-char="dzaki"] img{height:calc(64px * .9);}
+      /* Layar main: HUD 2 baris, arena + skor menempel di atas, soal di bawahnya */
+      .g-hud{flex-wrap:wrap;gap:4px 8px;padding:6px 10px;}
+      .g-hud-title{font-size:13px;}
+      .hud-pills{order:3;width:100%;justify-content:center;gap:4px;}
+      .g-center{order:-1;position:sticky;top:0;z-index:20;padding:6px 10px;gap:4px;background:#dcebf7;border-bottom:1.5px solid rgba(100,160,210,.3);box-shadow:0 4px 10px rgba(60,100,180,.12);}
+      .g-panel{padding:8px 10px;}
+      .sc-box{padding:2px 10px;}
+      .sc-val{font-size:15px;}
+      #arenaWrap{--cw:clamp(52px,17vw,72px);}
+      #charLeft{width:calc(var(--cw) * var(--sL,1))!important;}
+      #charRight{width:calc(var(--cw) * var(--sR,1))!important;}
+    }
+
+    /* ── HP miring (landscape, layar pendek) ── */
+    @media (max-height:520px) and (min-aspect-ratio:1/1){
+      /* Beranda */
+      #screenMenu{padding:6px 1.5vw;}
+      .menu-card{aspect-ratio:auto;width:min(96vw,calc(92vh*16/9));}
+      .menu-hero{gap:1vh;padding:3% 2%;}
+      .menu-hero .menu-title h1{font-size:clamp(22px,4vw,34px);}
+      .hero-stage{--cw:clamp(70px,min(22vh,13vw),130px);}
+      .theme-btn{min-height:clamp(54px,13vh,72px);}
+      .t-av,.t-av img{width:clamp(54px,13vh,72px);height:clamp(54px,13vh,72px);}
+      .footer-cr{margin-top:6px;font-size:10px;}
+      /* Pilih karakter: kartu mengikuti isi (tidak dikunci 16:9), halaman bisa di-scroll */
+      #screenStart{padding:6px 1.5vw;}
+      .setup-card{aspect-ratio:auto;width:min(98vw,calc(100vh*16/9));padding:10px 14px 8px;border-radius:20px;}
+      .setup-title{margin-bottom:6px;}
+      .setup-title h2{font-size:18px;}
+      .setup-title p{font-size:11px;margin-top:0;}
+      .setup-grid{gap:8px;}
+      .team-col{padding:6px 8px;}
+      .team-col > div:first-child{font-size:12px!important;margin-bottom:4px!important;}
+      .team-col > div:nth-of-type(2){font-size:10px!important;margin-bottom:3px!important;}
+      .tm-input{font-size:16px;padding:3px 8px;margin-bottom:6px!important;}
+      .char-picker .char-pick-item img{--h:clamp(56px,min(26vh,calc((100cqw - 48px) / 1.53)),330px);}
+      .setup-center .diff-label{font-size:11px;margin-bottom:3px;}
+      .setup-center .diff-row{gap:4px;margin-bottom:6px;}
+      .setup-center .diff-btn,.setup-center .mode-btn{padding:4px;font-size:11px;}
+      .setup-foot{margin-top:6px;}
+      .setup-foot .cta-btn{padding:8px 18px;font-size:14px;}
+      .setup-foot .back-link{margin-top:4px;font-size:11px;}
+      /* Layar main: 3 kolom, semua muat tanpa terpotong */
+      .g-hud{flex-wrap:nowrap;gap:6px;padding:3px 8px;}
+      .g-hud-title{font-size:12px;}
+      .hud-pills{order:0;width:auto;}
+      .hud-pill{font-size:10px;padding:2px 7px;}
+      .hud-btn{padding:3px 8px;}
+      .g-body{flex-direction:row;overflow:hidden;}
+      .g-panel{flex:0 0 31%;width:auto;padding:6px;gap:4px;overflow-y:auto;border-bottom:none;}
+      .g-panel.left{border-right:1.5px solid rgba(100,160,210,.2)!important;}
+      .g-panel.right{border-left:1.5px solid rgba(100,160,210,.2)!important;}
+      .g-center{flex:1;min-width:0;padding:4px;gap:3px;}
+      .opts-list{flex:none;overflow:visible;gap:4px;}
+      .opt-btn{min-height:36px;padding:6px 9px;font-size:11px;}
+      .q-card{padding:7px 10px;}
+      .q-card .q-txt{font-size:11px;}
+      .q-ar{font-size:17px;line-height:1.6;margin-top:4px;}
+      .opt-btn .ar{font-size:16px;line-height:1.6;}
+      .mini-fb{padding:6px 8px;}
+      .sc-box{padding:2px 10px;}
+      #arenaWrap{--cw:clamp(48px,min(15vh,10vw),96px);}
+      #charLeft{width:calc(var(--cw) * var(--sL,1))!important;}
+      #charRight{width:calc(var(--cw) * var(--sR,1))!important;}
+      .cd-num{font-size:80px;}
+      /* Layar menang */
+      .win-card{padding:14px 18px;max-width:560px;}
+      .win-trophy{font-size:36px;margin-bottom:2px;}
+      .win-sub{margin-bottom:6px;}
+      .win-char{margin:2px 0 8px;}
+      .win-char img{max-height:76px;}
+      .win-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+      .win-btns .cta-btn{padding:9px 10px;font-size:13px;}
+    }
   </style>
 </head>
 <body>
